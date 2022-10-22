@@ -87,13 +87,10 @@
 					},
 					"logStorageSettings": {
 						"linkedServiceName": {
-							"referenceName": "ls_blob",
+							"referenceName": "ls_copy_delete",
 							"type": "LinkedServiceReference"
 						},
-						"path": {
-							"value": "@activity('Copy data1').output",
-							"type": "Expression"
-						}
+						"path": "input"
 					},
 					"enableLogging": true,
 					"storeSettings": {
