@@ -20,7 +20,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "employees_tbl"
+			"table": "Emp_table"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
