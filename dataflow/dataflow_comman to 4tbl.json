@@ -1,0 +1,156 @@
+{
+	"name": "dataflow_comman to 4tbl",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Ds_blob2",
+						"type": "DatasetReference"
+					},
+					"name": "commantablesplit"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_adb1",
+						"type": "DatasetReference"
+					},
+					"name": "desti"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_adb2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_adb3",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_adb4",
+						"type": "DatasetReference"
+					},
+					"name": "sink3"
+				}
+			],
+			"transformations": [
+				{
+					"name": "mappingtblesplit"
+				},
+				{
+					"name": "AlterRow1"
+				},
+				{
+					"name": "acaa"
+				},
+				{
+					"name": "ecee"
+				},
+				{
+					"name": "ahcc"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          mapping_table as string,",
+				"          Source as string,",
+				"          employees_count as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> commantablesplit",
+				"commantablesplit split(mapping_table==\"employees_tbl\",",
+				"     mapping_table==\"Hr_tbl\",",
+				"     mapping_table==\"etl_tbl\",",
+				"     mapping_table==\"accout_tbl\",",
+				"     disjoint: false) ~> mappingtblesplit@(employeestbl, Hrtbl, etltbl, accouttbl, othersrows)",
+				"mappingtblesplit@employeestbl alterRow(updateIf(employees_count=='null')) ~> AlterRow1",
+				"mappingtblesplit@accouttbl alterRow(updateIf(employees_count==\"null\")) ~> acaa",
+				"mappingtblesplit@etltbl alterRow(updateIf(employees_count==\"null\")) ~> ecee",
+				"mappingtblesplit@Hrtbl alterRow(updateIf(employees_count==\"null\")) ~> ahcc",
+				"AlterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          source as string,",
+				"          employee_count as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:false,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['employee_count'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          source = Source,",
+				"          employee_count = employees_count",
+				"     )) ~> desti",
+				"acaa sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          source as string,",
+				"          employee_count as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          source = Source,",
+				"          employee_count = employees_count",
+				"     )) ~> sink1",
+				"ecee sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          source as string,",
+				"          employee_count as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          source = Source,",
+				"          employee_count = employees_count",
+				"     )) ~> sink2",
+				"ahcc sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          source as string,",
+				"          employee_count as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          source = Source,",
+				"          employee_count = employees_count",
+				"     )) ~> sink3"
+			]
+		}
+	}
+}

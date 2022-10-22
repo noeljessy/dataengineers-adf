@@ -1,0 +1,17 @@
+{
+	"name": "ds_SynapseAnalytics_polybase",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_synapse",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "synapsepractise"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
