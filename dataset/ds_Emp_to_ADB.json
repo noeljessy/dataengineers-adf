@@ -1,0 +1,26 @@
+{
+	"name": "ds_Emp_to_ADB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_AzureDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "emp_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Emp_name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Emp_table"
+		}
+	}
+}
