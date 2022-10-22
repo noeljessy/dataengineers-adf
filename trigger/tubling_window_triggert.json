@@ -1,0 +1,27 @@
+{
+	"name": "tubling_window_triggert",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipeline": {
+			"pipelineReference": {
+				"referenceName": "pl_Copydata_and _delete",
+				"type": "PipelineReference"
+			}
+		},
+		"type": "TumblingWindowTrigger",
+		"typeProperties": {
+			"frequency": "Hour",
+			"interval": 15,
+			"startTime": "2022-10-22T14:16:00Z",
+			"endTime": "2022-10-23T14:16:00Z",
+			"delay": "00:00:00",
+			"maxConcurrency": 50,
+			"retryPolicy": {
+				"count": 3,
+				"intervalInSeconds": 30
+			},
+			"dependsOn": []
+		}
+	}
+}
