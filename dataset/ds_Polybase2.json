@@ -1,0 +1,32 @@
+{
+	"name": "ds_Polybase2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_blob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Emp1.csv",
+				"container": "emptables"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Emp_id",
+				"type": "String"
+			},
+			{
+				"name": "Emp_name",
+				"type": "String"
+			}
+		]
+	}
+}
