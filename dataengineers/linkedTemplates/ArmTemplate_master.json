@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Ls_AzureDatabase'"
 		},
+		"ls_Adlsgen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_Adlsgen2'"
+		},
 		"ls_blob_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ls_blob'"
@@ -22,6 +26,10 @@
 		"ls_synapse_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ls_synapse'"
+		},
+		"ls_Adlsgen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://engineersdatalakegen2.dfs.core.windows.net/"
 		},
 		"Event_trigger_properties_typeProperties_scope": {
 			"type": "string",
@@ -57,6 +65,9 @@
 					"Ls_AzureDatabase_connectionString": {
 						"value": "[parameters('Ls_AzureDatabase_connectionString')]"
 					},
+					"ls_Adlsgen2_accountKey": {
+						"value": "[parameters('ls_Adlsgen2_accountKey')]"
+					},
 					"ls_blob_connectionString": {
 						"value": "[parameters('ls_blob_connectionString')]"
 					},
@@ -65,6 +76,9 @@
 					},
 					"ls_synapse_connectionString": {
 						"value": "[parameters('ls_synapse_connectionString')]"
+					},
+					"ls_Adlsgen2_properties_typeProperties_url": {
+						"value": "[parameters('ls_Adlsgen2_properties_typeProperties_url')]"
 					}
 				}
 			},
