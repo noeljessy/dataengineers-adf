@@ -1,0 +1,7 @@
+{
+	"name": "ls-DE-APrivateEP-blob",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/82c13817-bfa7-4c3d-8ae1-129d5baf2145/resourceGroups/RG-DataEngineers/providers/Microsoft.Storage/storageAccounts/dataengineers123sc",
+		"groupId": "blob"
+	}
+}
