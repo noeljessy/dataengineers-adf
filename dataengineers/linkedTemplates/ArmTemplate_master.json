@@ -15,9 +15,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ls_blob'"
 		},
+		"ls_copy_delete_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_copy_delete'"
+		},
 		"ls_synapse_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'ls_synapse'"
+		},
+		"Event_trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/82c13817-bfa7-4c3d-8ae1-129d5baf2145/resourceGroups/RG-DataEngineers/providers/Microsoft.Storage/storageAccounts/dataengineers123sc"
 		},
 		"containerUri": {
 			"type": "string",
@@ -52,12 +60,38 @@
 					"ls_blob_connectionString": {
 						"value": "[parameters('ls_blob_connectionString')]"
 					},
+					"ls_copy_delete_connectionString": {
+						"value": "[parameters('ls_copy_delete_connectionString')]"
+					},
 					"ls_synapse_connectionString": {
 						"value": "[parameters('ls_synapse_connectionString')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "dataengineers_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Event_trigger_properties_typeProperties_scope": {
+						"value": "[parameters('Event_trigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'dataengineers_ArmTemplate_0')]"
+			]
 		}
 	]
 }

@@ -11,8 +11,14 @@
 		"ls_blob_connectionString": {
 			"value": ""
 		},
+		"ls_copy_delete_connectionString": {
+			"value": ""
+		},
 		"ls_synapse_connectionString": {
 			"value": ""
+		},
+		"Event_trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/82c13817-bfa7-4c3d-8ae1-129d5baf2145/resourceGroups/RG-DataEngineers/providers/Microsoft.Storage/storageAccounts/dataengineers123sc"
 		},
 		"containerUri": {
 			"value": ""
