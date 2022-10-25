@@ -1,0 +1,41 @@
+{
+	"name": "ds_get_file_exite_or_not",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_blob",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Department_Details.txt",
+				"container": "output"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Departid",
+				"type": "String"
+			},
+			{
+				"name": "DepartName",
+				"type": "String"
+			},
+			{
+				"name": "Departcode",
+				"type": "String"
+			}
+		]
+	}
+}
