@@ -1,0 +1,36 @@
+{
+	"name": "data refrence sample xlsxfile",
+	"properties": {
+		"activities": [
+			{
+				"name": "N_b_sample xlsx file",
+				"type": "SynapseNotebook",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebook": {
+						"referenceName": "Notebook 2",
+						"type": "NotebookReference"
+					},
+					"snapshot": true,
+					"sparkPool": {
+						"referenceName": "DEsparkpool",
+						"type": "BigDataPoolReference"
+					},
+					"executorSize": null,
+					"driverSize": null
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-10-30T16:54:12Z"
+	},
+	"type": "Microsoft.Synapse/workspaces/pipelines"
+}

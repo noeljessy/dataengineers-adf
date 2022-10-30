@@ -1,0 +1,72 @@
+{
+	"name": "Notebook 2",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "DEsparkpool",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "38e4bfbf-258b-4cbe-a7fe-d469c8b85ee0"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/82c13817-bfa7-4c3d-8ae1-129d5baf2145/resourceGroups/RG-DataEngineers/providers/Microsoft.Synapse/workspaces/deworkspaces/bigDataPools/DEsparkpool",
+				"name": "DEsparkpool",
+				"type": "Spark",
+				"endpoint": "https://deworkspaces.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/DEsparkpool",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.2",
+				"nodeCount": 10,
+				"cores": 8,
+				"memory": 56,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"df = spark.read.load('https://synapsestorageaccount45.dfs.core.windows.net/synapsefilename45/input/Data Refresh Sample Data.xlsx',format='xlsx')\r\n",
+					"display(df.limit(10))-->10 rows"
+				],
+				"execution_count": 1
+			}
+		]
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "practice2 data refresh sample data",
+	"properties": {
+		"content": {
+			"query": "OPENROWSET(\n BULK 'https://synapsestorageaccount45.dfs.core.windows.net/synapsefilename45/input/Data Refresh Sample Data.xlsx',\n FORMAT= 'xlsx',\n HEADER_ROW = TRUE,\n PARSER_VERSION ='2.0'\n) AS [rusult]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "synapse_database",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
